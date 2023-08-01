@@ -11,4 +11,14 @@ class CinemaController
     SELECT titre, anneeSortie FROM film
     ");
     require "view/listFilms.php";}
+
+    public function listActeurs(){
+
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->query("
+        SELECT nom, prenom, dateNaissance FROM personne
+        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        ORDER BY id_acteur
+        ");
+        require "view/listActeurs.php";}
 }
