@@ -8,7 +8,7 @@
     </thead>
     <tbody>
     <?php
-        foreach( $requeteA->fetchAll() as $personne){ ?>
+        foreach( $requeteR->fetchAll() as $personne){ ?>
                 
             <tr>
                 <td><?= $personne["nom"]?></td>

@@ -17,27 +17,7 @@
                 <td><?= $film["anneeSortie"]?></td>
             </tr>
         
-        <?php } ?>
-
-        <table class = "uk-table uk-table-striped">
-    <thead>
-        <tr>
-            <th>realisateur</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-        foreach( $realisateur->fetchAll() as $realisateur){ ?>
-                
-            <tr>
-                <td><?= $realisateur["id_realisateur"]?></td>
-                
-            </tr>
-        
-        <?php } ?>
-
-        
+        <?php } ?>            
     </tbody>
 </table>
 <?php

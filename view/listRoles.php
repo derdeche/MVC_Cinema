@@ -1,19 +1,17 @@
 <table class = "uk-table uk-table-striped">
     <thead>
         <tr>
-            <th>nom</th>
-            <Th>prenom</Th>
+            <th>role</th>
+            
             
         </tr>
     </thead>
     <tbody>
     <?php
-        foreach( $requeteA->fetchAll() as $personne){ ?>
+        foreach( $requeteR->fetchAll() as $role){ ?>
                 
             <tr>
-                <td><?= $personne["nom"]?></td>
-                <td><?= $personne["prenom"]?></td>
-                
+                <td><?= $role["role"]?></td>               
             </tr>
         
         <?php } ?>
