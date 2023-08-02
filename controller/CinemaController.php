@@ -52,5 +52,13 @@ class CinemaController
         $requeteF = $pdo->prepare("select titre from film where id_film = :id");
         $requeteF->execute(["id"=>$id]);
         require "view/detailFilm.php";}   
+
+    public function detailA ($id){
+        $pdo = Connect ::seConnecter ();
+        $requeteA = $pdo->prepare("SELECT nom, prenom FROM personne 
+        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        WHERE id_acteur =  :id");
+        $requeteA->execute(["id"=>$id]);
+        require "view/detailActeur.php";} 
         
 }
