@@ -10,6 +10,10 @@ class CinemaController
     $requete = $pdo->query("
     SELECT titre, anneeSortie FROM film
     ");
+
+    $realisateur = $pdo->query("
+    SELECT id_realisateur FROM realisateur
+    ");
     require "view/listFilms.php";}
 
     public function listActeurs(){
