@@ -8,6 +8,7 @@
 <body>
     <div id="wrapper">
         <?= $content?>
+        
     </div>
 </body>
 </html>
