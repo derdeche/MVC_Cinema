@@ -47,5 +47,10 @@ class CinemaController
         ");
         require "view/listRoles.php";}
 
-    
+    public function detailF ($id){
+        $pdo = Connect ::seConnecter ();
+        $requeteF = $pdo->prepare("select titre from film where id_film = :id");
+        $requeteF->execute(["id"=>$id]);
+        require "view/detailFilm.php";}   
+        
 }
