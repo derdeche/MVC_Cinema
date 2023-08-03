@@ -21,8 +21,8 @@ if(isset($_GET["action"])){
         case "detailR":$ctrlCinema->detailR($id);break;
         case "detailGenre":$ctrlCinema->detailGenre($id);break;
         case "detailRole":$ctrlCinema->detailRole($id);break;
-        case "ajoutRole":$ctrlCinema->ajoutRole();break;
         case "ajoutGenre" :$ctrlCinema->ajoutGenre();break;
+        case "ajoutRole":$ctrlCinema->ajoutRole();break;
     }
 }
 
@@ -37,6 +37,6 @@ if(isset($_GET["action"])){
         $ctrlCinema->detailR($id);
         $ctrlCinema->detailGenre($id);
         $ctrlCinema->detailRole($id);
-        $ctrlCinema->ajoutRole();
         $ctrlCinema->ajoutGenre();
+        $ctrlCinema->ajoutRole();
 };
