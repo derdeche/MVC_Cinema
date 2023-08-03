@@ -1,13 +1,16 @@
 <?php
 ob_start();
-$role = $requeterole->fetch();
-echo $role["role"];
+//liste des films ou tel role a été joué
 
+foreach( $requeteRole->fetchAll() as $film){ ?>
+        
+    <tr>
+        <td><?= $film["titre"]?></td><br>
+        
+        
+    </tr>
 
-
-
-
-
+<?php } 
 
 
 $content = ob_get_clean();
