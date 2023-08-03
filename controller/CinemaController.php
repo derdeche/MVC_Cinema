@@ -108,6 +108,24 @@ class CinemaController
                 die;
             }
                 require "view/ajoutGenre.php";
-                
-           
-        }}
+                           
+        }
+
+        public function ajoutRole (){
+            if(isset($_POST['submit'])){
+                $pdo = connect::seConnecter();
+                $requeteAjoutRole= $pdo->prepare("
+                INSERT INTO role (role)
+                VALUES (:nomRole)"
+                );
+                $requeteAjoutRole->execute(['nomRole' => $_POST['nomRole']]);
+                $newId = $pdo->lastInsertId();
+                header("Location:index.php?action=detailRole&id=".$newId);
+                die;
+
+            }
+                require "view/ajoutRole.php";
+        
+        }       
+          
+}
