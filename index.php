@@ -20,6 +20,7 @@ if(isset($_GET["action"])){
         case "detailA":$ctrlCinema->detailA($id);break;
         case "detailR":$ctrlCinema->detailR($id);break;
         case "detailRole":$ctrlCinema->detailRole($id);break;
+        case "detailGenre":$ctrlCinema->detailGenre($id);break;
     }
 }
 
@@ -33,4 +34,5 @@ else{
     $ctrlCinema->detailA($id);
     $ctrlCinema->detailR($id);
     $ctrlCinema->detailRole($id);
+    $ctrlCinema->detailGenre($id);
 };
