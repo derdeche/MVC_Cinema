@@ -19,20 +19,20 @@ if(isset($_GET["action"])){
         case "detailF":$ctrlCinema->detailF($id);break;
         case "detailA":$ctrlCinema->detailA($id);break;
         case "detailR":$ctrlCinema->detailR($id);break;
-        case "detailRole":$ctrlCinema->detailRole($id);break;
         case "detailGenre":$ctrlCinema->detailGenre($id);break;
+        case "detailRole":$ctrlCinema->detailRole($id);break;
     }
 }
 
-else{
-    $ctrlCinema->listFilms();
-    $ctrlCinema->listActeurs();
-    $ctrlCinema->listRealisateurs();
-    $ctrlCinema->listGenres();
-    $ctrlCinema->listRoles();
-    $ctrlCinema->detailF($id);
-    $ctrlCinema->detailA($id);
-    $ctrlCinema->detailR($id);
-    $ctrlCinema->detailRole($id);
-    $ctrlCinema->detailGenre($id);
+    else{
+        $ctrlCinema->listFilms();
+        $ctrlCinema->listActeurs();
+        $ctrlCinema->listRealisateurs();
+        $ctrlCinema->listGenres();
+        $ctrlCinema->listRoles();
+        $ctrlCinema->detailA($id);
+        $ctrlCinema->detailF($id);
+        $ctrlCinema->detailR($id);
+        $ctrlCinema->detailGenre($id);
+        $ctrlCinema->detailRole($id);
 };
