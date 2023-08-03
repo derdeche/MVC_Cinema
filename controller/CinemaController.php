@@ -71,10 +71,20 @@ class CinemaController
 
     public function detailRole ($id){
         $pdo = Connect ::seConnecter ();
-        $requeteRole = $pdo->prepare("SELECT nom, prenom FROM personne
-        INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne        
-        WHERE id_realisateur =  :id"); 
+        $requeteRole = $pdo->prepare("SELECT titre FROM film
+        INNER JOIN jouer ON film.id_film = jouer.id_film        
+        WHERE id_role =  :id"); 
         $requeteRole->execute(["id"=>$id]);
         require "view/detailRole.php";} 
-              
+
+    public function detailGenre ($id){
+        $pdo = Connect ::seConnecter ();
+        $requeteGenre = $pdo->prepare("SELECT titre FROM film
+        INNER JOIN action ON film.id_film = action.id_film     
+        WHERE id_genre =  :id"); 
+        $requeteGenre->execute(["id"=>$id]);
+        require "view/detailGenre.php";} 
+
+    
+   
 }
