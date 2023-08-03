@@ -85,6 +85,29 @@ class CinemaController
         $requeteGenre->execute(["id"=>$id]);
         require "view/detailGenre.php";} 
 
-    
-   
-}
+    /*public function ajoutFilm (){
+        if(isset($_post["submit"])){
+            $titre = "titre";
+            $anneeSortie = "anneeSortie";
+            $duree = "duree";
+            $synopsis = "synopsis";
+            $note = "affiche";}}*/
+
+            public function ajoutGenre(){
+            if(isset($_POST['submit'])){
+
+                // var_dump($_POST);die;    
+                $pdo = connect::seConnecter(); 
+                $requeteAjoutGenre= $pdo->prepare("
+                INSERT INTO genre (genre)
+                VALUES (:nomGenre)"
+                );
+                $requeteAjoutGenre->execute(['nomGenre' => $_POST['nomGenre']]);
+                $newId = $pdo->lastInsertId();
+                header("Location:index.php?action=detailGenre&id=".$newId);
+                die;
+            }
+                require "view/ajoutGenre.php";
+                
+           
+        }}
