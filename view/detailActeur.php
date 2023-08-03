@@ -1,7 +1,8 @@
 <?php
 ob_start();
 $acteur = $requeteA->fetch();
-echo $acteur["nom"];
+echo $acteur["nom"] ."<br>";
+echo   $acteur["prenom"] ;
 
 
 
