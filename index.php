@@ -14,29 +14,27 @@ if(isset($_GET["action"])){
         case"listFilms" : $ctrlCinema->listFilms();break;
         case"listActeurs" : $ctrlCinema->listActeurs();break;
         case"listRealisateurs" :$ctrlCinema->listRealisateurs();break;
-        case "listGenres" :$ctrlCinema->listGenres();break;
+        case"listGenres" :$ctrlCinema->listGenres();break;
         case"listRoles" :$ctrlCinema->listRoles();break;
+        
         case "detailFilm":$ctrlCinema->detailFilm($id);break;
         case "detailActeur":$ctrlCinema->detailActeur($id);break;
         case "detailRealisateur":$ctrlCinema->detailRealisateur($id);break;
         case "detailGenre":$ctrlCinema->detailGenre($id);break;
         case "detailRole":$ctrlCinema->detailRole($id);break;
+
+        case "ajoutFilm":$ctrlCinema->ajoutFilm();break;
+        case "ajoutActeur":$ctrlCinema->ajoutActeur();break;
+        case "ajoutRealisateur":$ctrlCinema->ajoutRealisateur();break;
         case "ajoutGenre" :$ctrlCinema->ajoutGenre();break;
         case "ajoutRole":$ctrlCinema->ajoutRole();break;
+
+        case "ajoutCasting":$ctrlCinema->ajoutCasting();break;
     }
 }
-
+        // retour page d'acceuil
     else{
         $ctrlCinema->listFilms();
-        $ctrlCinema->listActeurs();
-        $ctrlCinema->listRealisateurs();
-        $ctrlCinema->listGenres();
-        $ctrlCinema->listRoles();
-        $ctrlCinema->detailA($id);
-        $ctrlCinema->detailF($id);
-        $ctrlCinema->detailR($id);
-        $ctrlCinema->detailGenre($id);
-        $ctrlCinema->detailRole($id);
-        $ctrlCinema->ajoutGenre();
-        $ctrlCinema->ajoutRole();
+        
+     
 };
