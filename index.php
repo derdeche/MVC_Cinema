@@ -16,9 +16,9 @@ if(isset($_GET["action"])){
         case"listRealisateurs" :$ctrlCinema->listRealisateurs();break;
         case "listGenres" :$ctrlCinema->listGenres();break;
         case"listRoles" :$ctrlCinema->listRoles();break;
-        case "detailF":$ctrlCinema->detailF($id);break;
-        case "detailA":$ctrlCinema->detailA($id);break;
-        case "detailR":$ctrlCinema->detailR($id);break;
+        case "detailFilm":$ctrlCinema->detailFilm($id);break;
+        case "detailActeur":$ctrlCinema->detailActeur($id);break;
+        case "detailRealisateur":$ctrlCinema->detailRealisateur($id);break;
         case "detailGenre":$ctrlCinema->detailGenre($id);break;
         case "detailRole":$ctrlCinema->detailRole($id);break;
         case "ajoutGenre" :$ctrlCinema->ajoutGenre();break;
