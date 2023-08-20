@@ -1,24 +1,18 @@
 <?php ob_start();?>
 
-    <thead>
-        <tr>
-            <th>TITRE</th>
-            <Th>ANNEE SORTIE</Th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-        foreach( $requete->fetchAll() as $film){ ?>
-                
-            <tr>
-                <td><?= $film["titre"]?></td>
-                <td><?= $film["anneeSortie"]?></td>
-            </tr>
-        
-        <?php } ?>            
-    </tbody>
-</table>
-<?php
+    
+        <div class="container"> 
+    
+            <?php foreach( $requete->fetchAll() as $film ){ ?>
+                                        
+            <div class = "photo">
+            <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>">
+                        <img src="<?= $film["affiche"] ?>"  >                     
+            </div></a>
+        </div>
+        <?php }            
+
+
 
 //$titre = "Liste des films";
 //$titre_secondaire = "Liste des films";
