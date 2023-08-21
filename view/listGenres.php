@@ -1,27 +1,19 @@
 <?php ob_start();?>
-<table >
-    <thead>
-        <tr>
-            <th>Genre</th>
-            
-            
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-        foreach( $requeteG->fetchAll() as $genre){ ?>
-                
-            <tr>
-                <td><?= $genre["genre"]?></td>               
-            </tr>
-        
+<p class= "titre">Liste des Genres</p>
+    
+<?php   foreach( $requete->fetchAll() as $genre){ ?>
+            <div class="genre">
+                    <a href="index.php?action=detailGenre&id=<?= $genre["id_genre"] ?>">
+                    "<?= $genre["genre"]?>"</a>
+            </div>
+                         
+                    
         <?php } ?>
-    </tbody>
-</table>
+
 <?php
 
-//$titre = "Liste des films";
-//$titre_secondaire = "Liste des films";
+//$titre = "Liste des Genres";
+//$titre_secondaire = "Liste des Genres";
 $content = ob_get_clean();
 require "view/template.php";
 
