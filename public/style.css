@@ -23,16 +23,18 @@
     height: 39px;
     width: 39px;
     text-align: center;
-    background: #1b1b1b;
+    /* background: #1b1b1b; */
     display: block;
     border-radius: 10px;
     cursor: pointer;
+    
 }
 
 .arrow-btn a span{
   color:white;
-  line-height: 39px; 
-  font-size: 35px;
+  line-height: 32px; 
+  font-size: 25px;
+  
 }
 
 .fond
