@@ -11,6 +11,6 @@ ob_start();
 $titre = "Liste des films";
 $titre_secondaire = "Liste des films";
 $content = ob_get_clean();
-require "view/Ajout.php";
+require "view/template.php";
 
 ?>
