@@ -82,8 +82,8 @@ nav ul
 .photo img
 {
       
-    width: 600px;
-    height: 400px;
+    width: 500px;
+    height: 300px;
     
     display: flex;
     border-radius: 10px;
@@ -94,10 +94,11 @@ nav ul
     transition: 1s;
     /* transform: 1s; */
     
+    
 }
 .photo img:hover {
-  width: 700px;
-  height: 500px;
+   width: 550px; 
+  height: 350px;
   border-radius: 10px;
   filter: grayscale(0%);
   transform: 0.5s;
@@ -105,15 +106,22 @@ nav ul
 .photo
 {
   display: flex;
-    /* flex-wrap: wrap; */
-    width: 80vw;
+    flex-wrap: wrap; 
+     width: 80vw; 
     margin:  auto;
   flex-flow: row wrap;  
    justify-content: center;  
     /* align-items: center; */
-  
-  
    
+}
+
+a {
+  text-decoration: none;
+  font-size: 25px;
+  text-align: center;
+  color: rgb(231, 17, 17);
+  
+    
 }
 
 
