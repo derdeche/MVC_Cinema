@@ -7,7 +7,7 @@ class CinemaController
     public function listFilms(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT titre, anneeSortie, affiche FROM film
+        SELECT id_film, titre, anneeSortie, affiche FROM film
         ");
         require "view/listFilms.php";}
 
@@ -18,7 +18,7 @@ class CinemaController
     public function listActeurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("     
-        SELECT  nom, prenom, DATE_FORMAT(dateNaissance, '%d-%m-%Y') AS date, photo
+        SELECT  id_acteur, nom, prenom, DATE_FORMAT(dateNaissance, '%d-%m-%Y') AS date, photo
         FROM personne
         INNER JOIN acteur ON personne.id_personne = acteur.id_personne               
         ");
@@ -27,7 +27,7 @@ class CinemaController
     public function listRealisateurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT nom, prenom, DATE_FORMAT(dateNaissance, '%d-%m-%Y') AS date, photo FROM personne
+        SELECT id_realisateur, nom, prenom, DATE_FORMAT(dateNaissance, '%d-%m-%Y') AS date, photo FROM personne
         INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
         
         ");
@@ -36,22 +36,22 @@ class CinemaController
     public function listGenres(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT genre FROM genre
+        SELECT id_genre,genre FROM genre
         ");
         require "view/listGenres.php";}
 
     public function listRoles(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT role FROM role
+        SELECT id_role,role FROM role
         ");
         require "view/listRoles.php";}
 
     public function listCastings()
     {
         $pdo = Connect::seConnecter();
-        $request = $pdo->query("
-        SELECT nom, prenom, role, titre FROM jouer
+        $requete = $pdo->query("
+        SELECT jouer.id_acteur ,jouer.id_film, jouer.id_role, nom, prenom, role, titre FROM jouer
         INNER JOIN personne ON jouer.id_acteur = personne.id_personne        
         INNER JOIN role ON jouer.id_role = role.id_role
         INNER JOIN film ON jouer.id_film = film.id_film
