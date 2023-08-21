@@ -1,24 +1,29 @@
 <?php 
 ob_start();?>
+<p class= "titre"><strong>Vous voulez </strong></p>
 
 <div class="ajout">
-<a href="index.php?action=ajoutFilm"><p class ="a">Ajouter un Film</a>
-</div>
 
-<div class="ajout">
-<a href="index.php?action=ajoutActeur"><p class ="a">Ajouter un Acteur</a>
-</div>
+    <div class="rectangle">
+    <a href="index.php?action=ajoutFilm"><p class ="a"><strong>Ajouter un Film</strong></a>
+    </div>
 
-<div class="ajout">
-<a href="index.php?action=ajoutRealisateur"><p class ="a">Ajouter un Réalisateur</a>
-</div>
+    <div class="rectangle">
+    <a href="index.php?action=ajoutActeur"><p class ="a"><strong>Ajouter un Acteur</strong></a>
+    </div>
 
-<div class="ajout">
-<a href="index.php?action=ajoutGenre"><p class ="a">Ajouter un Genre</a>
-</div>
+    <div class="rectangle">
+    <a href="index.php?action=ajoutRealisateur"><p class ="a"><strong>Ajouter un Réalisateur</strong></a>
+    </div>
 
-<div class="ajout">
-<a href="index.php?action=ajoutRole"><p class ="a">Ajouter un Roles</a>
+    <div class="rectangle">
+    <a href="index.php?action=ajoutGenre"><p class ="a"><strong>Ajouter un Genre</strong></a>
+    </div>
+
+    <div class="rectangle">
+    <a href="index.php?action=ajoutRole"><p class ="a"><strong>Ajouter un Role</strong></a>
+    </div>
+    
 </div>
 
 
