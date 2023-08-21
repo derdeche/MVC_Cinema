@@ -1,10 +1,15 @@
 <?php
 ob_start();
-$film = $requeteF->fetch();
-echo $film["titre"];
 
 
+$film = $requete->fetch();
 
+?>
+<?= $film["titre"] ?>
+<p>Sortie en <?= $film["anneeSortie"] ?>
+        
+        
+    
 
 
 
