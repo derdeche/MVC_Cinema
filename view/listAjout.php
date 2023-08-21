@@ -21,9 +21,9 @@ ob_start();?>
     </div>
 
     <div class="rectangle">
-    <a href="index.php?action=ajoutRole"><p class ="a"><strong>Ajouter un Role</strong></a>
+    <a href="index.php?action=ajoutRole"><p class ="a"><strong>Ajouter un Rôle</strong></a>
     </div>
-    
+
 </div>
 
 
