@@ -1,10 +1,17 @@
 <?php
 ob_start();
 ?>
- 
+<p class= "titre"><strong>Ajoutez un Genre</strong></p>
+
 <form action="index.php?action=ajoutGenre" method="post">
-    <input id="genre" name="nomGenre" />
-    <input type="submit" name="submit">
+    <div class="rect">
+        <div class="rectangle1">
+        <input id="genre" name="nomGenre" /><br>
+        </div>
+        <div class="rectangle1">
+        <input type="submit" name="submit">
+        </div>
+    </div>
 </form>
 
 <?php
