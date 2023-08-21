@@ -52,12 +52,12 @@ class CinemaController
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
         SELECT jouer.id_acteur ,jouer.id_film, jouer.id_role, nom, prenom, role, titre FROM jouer
-        INNER JOIN personne ON jouer.id_acteur = personne.id_personne        
         INNER JOIN role ON jouer.id_role = role.id_role
         INNER JOIN film ON jouer.id_film = film.id_film
-        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
-        "
-        );
+        INNER JOIN acteur ON jouer.id_acteur = acteur.id_acteur
+        INNER JOIN personne ON acteur.id_personne = personne.id_personne            
+              
+       ");
         
         require "view/listCastings.php";
     }
