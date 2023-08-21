@@ -1,13 +1,16 @@
 <?php ob_start();?>
-<p class= "titre">Liste des Genres</p>
+<p class= "titre"><strong>Liste des Genres</strong></p>
     
 <?php   foreach( $requete->fetchAll() as $genre){ ?>
-            <div class="genre">
+        
+        <div class="genre">
+        <div class="rectangle">
                     <a href="index.php?action=detailGenre&id=<?= $genre["id_genre"] ?>">
-                    "<?= $genre["genre"]?>"</a>
-            </div>
-                         
-                    
+                    <strong><?=  ucfirst($genre["genre"])?></strong></a>
+                    </div>
+        </div>
+        
+                 
         <?php } ?>
 
 <?php
