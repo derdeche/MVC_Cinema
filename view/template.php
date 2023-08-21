@@ -21,9 +21,9 @@
                         <ul>
                             <li><a href="index.php?action=listFilms"><button class="button1"><strong>Films</strong></button></a></li>
                             <li><a href="index.php?action=listActeurs"><button class="button1"><strong>Acteurs</strong></button></a></li>
-                            <li><a href="index.php?action=listRéalisateurs"><button class="button1"><strong>Réalisateurs</strong></button></a></li>
+                            <li><a href="index.php?action=listRealisateurs"><button class="button1"><strong>Réalisateurs</strong></button></a></li>
                             <li><a href="index.php?action=listGenres"><button class="button1"><strong>Genres</strong></button></a></li>
-                            <li><a href="index.php?action=listRôles"><button class="button1"><strong>Rôles</strong></button></a></li>
+                            <li><a href="index.php?action=listRoles"><button class="button1"><strong>Rôles</strong></button></a></li>
                             <li><a href="index.php?action=listCastings"><button class="button1"><strong>Castings</strong></button></a></li>
                             <li><a href="index.php?action=listAjout"><button class="button1"><strong>Ajout</strong></button></a></li>
                         </ul>
