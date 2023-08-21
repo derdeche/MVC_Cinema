@@ -47,5 +47,5 @@ ob_start();?>
 $title = "Ajouter un Film";
 $secondary_title = "Ajouter un Film ";
 $content = ob_get_clean();
-require "view/ajoutFilm.php";
+require "view/template.php";
 ?>
