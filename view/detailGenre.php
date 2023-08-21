@@ -2,7 +2,7 @@
 ob_start();
 
 /*affichage liste des films du meme genre */
-foreach( $requeteGenre->fetchAll() as $film){ ?>
+foreach( $requete->fetchAll() as $film){ ?>
         
     <tr>
         <td><?= $film["titre"]?></td><br>
