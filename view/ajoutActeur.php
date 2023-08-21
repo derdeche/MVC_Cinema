@@ -19,5 +19,5 @@ ob_start();
 $title = "Ajouter un acteur";
 $secondary_title = "Ajouter un Acteur ";
 $content = ob_get_clean();
-require "view/Ajout.php"
+require "view/template.php"
 ?>
