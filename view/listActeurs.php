@@ -1,27 +1,15 @@
 <?php ob_start();?>
-<table >
-    <thead>
-        <tr>
-            <th>nom</th>
-            <Th>prenom</Th>
-            
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-        foreach( $requeteA->fetchAll() as $personne){ ?>
-                
-            <tr>
-                <td><?= $personne["nom"]?></td>
-                <td><?= $personne["prenom"]?></td>
-                
-            </tr>
-        
-        <?php } ?>
-    </tbody>
-</table>
+<p class= "titre">Liste des Acteurs</p>
 <?php
-
+    foreach ($requete->fetchAll() as $acteur) { ?>
+                    
+                <div class="photo-acteur">
+                    <a href="index.php?action=detailsActeur&id=<?= $acteur["id_acteur"] ?>">
+                    <img src="<?= $acteur["photo"] ?>" ></a>
+                </div>
+                
+        <?php } ?>
+<?php
 //$titre = "Liste des films";
 //$titre_secondaire = "Liste des films";
 $content = ob_get_clean();
