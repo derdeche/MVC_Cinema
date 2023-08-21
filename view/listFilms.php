@@ -8,7 +8,8 @@
                 <div class = "photo">
                 <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>">
                         <img src="<?= $film["affiche"] ?>">
-                </a>                  
+                        <p ><strong><?= $film["titre"] ?></strong></p>                  
+                </a>
                 </div>
         <!-- </div> -->
         <?php }            
