@@ -2,7 +2,7 @@
 ob_start();?>
 
 <p class= "titre">Liste des Castings</p>
-<?php   foreach ($request->fetchAll() as $jouer) { ?>
+<?php   foreach ($requete->fetchAll() as $jouer) { ?>
     <div class="casting">
         <p>L'acteur <a href="index.php?action=detailActeur&id=<?=$jouer['id_acteur']?>"><?=$jouer["nom"] . " " . $jouer["prenom"] ?></a></p> 
         <p>a joué le Role de :<a href="index.php?action=detailRole&id=<?=$jouer['id_role']?>"> <?= $jouer["role"] ?> </a>
