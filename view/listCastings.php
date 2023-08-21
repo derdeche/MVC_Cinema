@@ -6,7 +6,7 @@ ob_start();?>
     <div class="cast">
         <div class="casting">
             <p>L'acteur : <a href="index.php?action=detailActeur&id=<?=$jouer['id_acteur']?>"><?=$jouer["nom"] . " " . $jouer["prenom"] ?></a></p> 
-            <p>a joué le Role de :<a href="index.php?action=detailRole&id=<?=$jouer['id_role']?>"> <?= $jouer["role"] ?> </a>
+            <p>a joué le Rôle de :<a href="index.php?action=detailRole&id=<?=$jouer['id_role']?>"> <?= $jouer["role"] ?> </a>
             <p>dans : <a href="index.php?action=detailFilm&id=<?=$jouer['id_film']?>"> <?= ucfirst($jouer["titre"] )?> </a></p> 
         </div> 
     </div>                   
