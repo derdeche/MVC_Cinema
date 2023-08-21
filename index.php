@@ -29,7 +29,7 @@ if(isset($_GET["action"])){
         case "ajoutRealisateur":$ctrlCinema->ajoutRealisateur();break;
         case "ajoutGenre" :$ctrlCinema->ajoutGenre();break;
         case "ajoutRole":$ctrlCinema->ajoutRole();break;
-        case "ajoutCasting":$ctrlCinema->ajoutCasting();break;
+        case "listAjout":$ctrlCinema->Ajout();break;
     }
 }
         // retour page d'acceuil
