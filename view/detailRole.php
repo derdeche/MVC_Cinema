@@ -2,7 +2,7 @@
 ob_start();
 //liste des films ou tel role a été joué
 
-foreach( $requeteRole->fetchAll() as $film){ ?>
+foreach( $requete->fetchAll() as $film){ ?>
         
     <tr>
         <td><?= $film["titre"]?></td><br>
