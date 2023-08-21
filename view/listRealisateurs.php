@@ -1,29 +1,19 @@
 <?php ob_start();?>
-<table >
-    <thead>
-        <tr>
-            <th>nom</th>
-            <Th>prenom</Th>
-            
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-        foreach( $requeteR->fetchAll() as $personne){ ?>
+<p class= "titre">Liste des Réalisateurs</p>
+
+<?php foreach ($requete->fetchAll() as $realisateur) { ?>
+                    
+                <div class="photo-realisateur">
+                    <a href="index.php?action=detailRealisateur&id=<?= $realisateur["id_realisateur"] ?>">
+                    <img src="<?= $realisateur["photo"] ?>" ></a>
+                </div>
                 
-            <tr>
-                <td><?= $personne["nom"]?></td>
-                <td><?= $personne["prenom"]?></td>
-                
-            </tr>
-        
         <?php } ?>
-    </tbody>
-</table>
 <?php
 
-//$titre = "Liste des films";
-//$titre_secondaire = "Liste des films";
+
+//$titre = "Liste des Réalisateurs";
+//$titre_secondaire = "Liste des Réalisateurs";
 $content = ob_get_clean();
 require "view/template.php";
 

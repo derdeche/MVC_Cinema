@@ -1,27 +1,21 @@
 <?php ob_start();?>
-<table >
-    <thead>
-        <tr>
-            <th>role</th>
-            
-            
-        </tr>
-    </thead>
-    <tbody>
+<p class= "titre">Liste des Roles</p>
     <?php
-        foreach( $requeteR->fetchAll() as $role){ ?>
-                
-            <tr>
-                <td><?= $role["role"]?></td>               
-            </tr>
-        
+        foreach( $requete->fetchAll() as $role){ ?>
+            <div class="role">
+                    <a href="index.php?action=detailRole&id=<?= $role["id_role"] ?>">
+                    "<?= $role["role"]?>"</a>
+                </div>
+                         
+                    
         <?php } ?>
-    </tbody>
-</table>
-<?php
 
-//$titre = "Liste des films";
-//$titre_secondaire = "Liste des films";
+<?php
+       
+         
+
+//$titre = "Liste des Roles";
+//$titre_secondaire = "Liste des Roles";
 $content = ob_get_clean();
 require "view/template.php";
 
