@@ -66,15 +66,15 @@ class CinemaController
         $pdo = Connect ::seConnecter ();
         $requete = $pdo->prepare("select titre from film where id_film = :id");
         $requete->execute(["id"=>$id]);
-        require "view/detailFilm.php";}   
+        require "view/detailFilm.php";}  
 
-    public function detailActeur ($id){
-        $pdo = Connect ::seConnecter ();
-        $requete = $pdo->prepare("SELECT nom, prenom FROM personne 
-        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
-        WHERE id_acteur =  :id");
-        $requete->execute(["id"=>$id]);
-        require "view/detailActeur.php";} 
+    // public function detailActeur ($id){
+        // $pdo = Connect ::seConnecter ();
+        // $requete = $pdo->prepare("SELECT nom, prenom FROM personne 
+        // INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        // WHERE id_acteur =  :id");
+    //  $requete->execute(["id"=>$id]);
+    // require "view/detailActeur.php";} 
 
     public function detailRealisateur ($id){
         $pdo = Connect ::seConnecter ();
@@ -232,7 +232,7 @@ class CinemaController
 		require "view/ajoutFilm.php";
 	}
 
-    public function detailFilm($id_film)
+    /*public function detailFilm($id_film)
 	{
 		
 		$pdo = Connect::seConnecter();
@@ -248,7 +248,7 @@ class CinemaController
 		$requete->execute(["id_film" => $film]);
 
         require "view/detailFilm.php";
-	}
+	}*/
 
     public function detailActeur($id_acteur)
 	{
