@@ -163,6 +163,43 @@ class CinemaController
             $date = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_SPECIAL_CHARS);
 			$prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_SPECIAL_CHARS);
 			$nom=  filter_input(INPUT_POST, "nom", FILTER_SANITIZE_SPECIAL_CHARS);
+            $sexe=  filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_SPECIAL_CHARS);
+            $photo = filter_input(INPUT_POST, "photo", FILTER_SANITIZE_SPECIAL_CHARS);
+					
+			if ($prenom && $nom && $date && $sexe && $photo) {
+				$pdo = Connect::seConnecter();
+				$stmt = $pdo->prepare
+                ("
+				INSERT INTO personne (prenom, nom, dateNaissance,sexe, photo)
+				VALUES (:prenom, :nom,:dateSQL, :sexe, :photo)
+				");
+
+				$stmt->execute(["prenom" => $prenom, "nom" => $nom,"dateSQL" => $date, "sexe"=>$sexe, "photo"=>$photo]);
+
+                $newIdPersonne = $pdo->lastInsertId();
+
+            $requete = $pdo->prepare("INSERT INTO acteur (id_personne)
+
+            VALUES (:idPersonne)");
+
+            $requete->execute(['idPersonne' => $newIdPersonne ]);
+
+            // header("Location:index.php?action=listActeurs&id=" . $newIdPersonne);
+
+				header('location:index.php?action=listActeurs');
+				 die();
+			}
+		}
+		require "view/ajoutActeur.php";
+	}
+
+    public function ajoutRealisateur()
+	{
+		if (isset($_POST["submit"]))
+           {
+            $date = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_SPECIAL_CHARS);
+			$prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_SPECIAL_CHARS);
+			$nom=  filter_input(INPUT_POST, "nom", FILTER_SANITIZE_SPECIAL_CHARS);
 					
 			if ($prenom && $nom && $date) {
 				$pdo = Connect::seConnecter();
@@ -174,7 +211,7 @@ class CinemaController
 
 				$stmt->execute(["prenom" => $prenom, "nom" => $nom,"dateNaissance" => $date]);
 
-				header('location:index.php?action=listActeurs');
+				header('location:index.php?action=listRealisateur');
 				die();
 			}
 		}
@@ -270,7 +307,7 @@ class CinemaController
 		$name = "$id_acteur";
 
 		$requete = $pdo->prepare("
-			SELECT id_acteur, titre, anneeSortie, role, id_film
+			SELECT id_acteur,id_film, titre, anneeSortie, role 
 			FROM acteur
 			
 
