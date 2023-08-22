@@ -15,8 +15,8 @@ ob_start();?>
     <label >Synopsis :</label>
     <input type="textarea" name="synopsis" id="synopsis">
 
-    <label >URL de l'affiche :</label>
-    <input type="textarea" name="affiche" id="affiche">
+    <label >Photo :</label>
+    <input type="textarea" name="affiche" id="affiche" placeholder= "URL">
 
     <label for="note">Note du film sur 5 :</label>
     <input type="number" min="0" max="5" name="note" id="note">
