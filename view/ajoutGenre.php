@@ -4,14 +4,12 @@ ob_start();
 <p class= "titre"><strong>Ajoutez un Genre</strong></p>
 
 <form action="index.php?action=ajoutGenre" method="post">
-    <div class="rect">
-        <div class="rectangle1">
-        <input id="genre" name="nomGenre" /><br>
-        </div>
-        <div class="rectangle1">
-        <input type="submit" name="submit">
-        </div>
-    </div>
+   
+        
+    <input placeholder= "Nom du Genre"></input>
+        
+    <input type="submit" name="submit" value="Ajouter"></input>
+     
 </form>
 
 <?php
