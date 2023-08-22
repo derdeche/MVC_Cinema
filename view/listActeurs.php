@@ -5,7 +5,7 @@
                     
                 <div class="photo-acteur">
                     <a href="index.php?action=detailsActeur&id=<?= $acteur["id_acteur"] ?>">
-                    <img src="<?= $acteur["photo"] ?>" >
+                    <img src=<?= $acteur["photo"] ?> >
                     <p ><strong><?= $acteur["nom"]." ".$acteur["prenom"] ?></strong></p>
                     </a> 
                 </div>
