@@ -3,8 +3,8 @@ ob_start();
 ?>
 <p class= "titre"><strong>Ajoutez un Rôle</strong></p>
 <form action="index.php?action=ajoutRole" method="post">
-    <input id="role" name="nomRole" />
-    <input type="submit" name="submit">
+<input placeholder= "Nom du Role">    </input>
+<input type="submit" name="submit" value="Ajouter"></input>
 </form>
 
 <?php
