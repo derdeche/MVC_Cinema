@@ -33,7 +33,7 @@ ob_start();?>
 
 <label >Réalisateur du film</label>
     <select name="id_realisateur" id="id_realisateur">
-        <?php foreach($requete->fetchAll() as $director){
+        <?php foreach($requete->fetchAll() as $realisateur){
            echo "<option value='".$realisateur['id_realisateur']."'>".$realisateur['nom']."</option>";
         }; ?>
     </select>    
