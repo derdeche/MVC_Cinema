@@ -18,7 +18,7 @@ ob_start();
     <label >Photo</label>
     <input type="varchar" name="photo" id="photo" placeholder="URL">
 
-    <input type="submit" name="submit" value="Ajouter l'acteur'">
+    <input type="submit" name="submit" value="Ajouter l'acteur">
 </form>
 
 <?php
