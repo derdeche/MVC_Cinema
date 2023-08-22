@@ -3,43 +3,42 @@ ob_start();?>
 
 <form action="index.php?action=ajoutFilm" method="post">
 
-    <label >Nom du film :</label>
-    <input type="textarea" name="titre" id="titre">
+    <label >Titre :</label>
+    <input type="textarea" name="titre"  placeholder="Nom du film ">
 
     <label >Année de sortie :</label>
-    <input type="number" name="anneeSortie" id="anneeSortie">
+    <input type="number" name="anneeSortie" >
 
-    <label >Durée du film :</label>
-    <input type="number" name="duree" id="duree">
+    <label >Durée :</label>
+    <input type="number" name="duree" >
 
     <label >Synopsis :</label>
-    <input type="textarea" name="synopsis" id="synopsis">
+    <input type="textarea" name="synopsis" >
 
     <label >Photo :</label>
-    <input type="textarea" name="affiche" id="affiche" placeholder= "URL">
+    <input type="textarea" name="affiche" placeholder= "URL">
 
-    <label for="note">Note du film sur 5 :</label>
-    <input type="number" min="0" max="5" name="note" id="note">
-    
-
-<label >Genre du film : </label>           
-    <select name ="id_genre" id="id_genre">
-        <?php foreach($requete->fetchAll() as $genre){
-            echo "<option value='".$genre['id_genre']."'>".$genre['genre']."</option>";
-        }; ?>
+    <label >Note :</label>
+    <input type="number" min="1" max="5" name="note" >
+        
+    <label >Genre : </label>           
+    <select >
+        <?php foreach($requete->fetchAll() as $genre){ ?>
+             <option value="<?= $genre['id_genre']?>"><?=$genre['genre']?></option>
+        <?php }?>
     </select>           
 
   
 
-<label >Réalisateur du film</label>
-    <select name="id_realisateur" id="id_realisateur">
-        <?php foreach($requete->fetchAll() as $realisateur){
-           echo "<option value='".$realisateur['id_realisateur']."'>".$realisateur['nom']."</option>";
-        }; ?>
-    </select>    
-      
-    <input type="submit" name="submit" value="Ajouter le Film">
-</form>
+    <label >Réalisateur :</label>
+        <select >
+            <?php foreach($requeteR->fetchAll() as $realisateur) {?>
+                <option value="<?= $realisateur['id_realisateur']?>"><?=$realisateur['nom']." ".$realisateur['prenom']?></option>
+        <?php  } ?>
+        </select>    
+        
+        <input type="submit" name="submit" value="Ajouter le Film">
+    </form>
        
        
         
