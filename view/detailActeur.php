@@ -1,5 +1,5 @@
 <?php
-ob_start();
+ob_start();?>
 <?php
     foreach ($requete->fetchAll() as $acteur) { ?>
         <div class="card-film">
