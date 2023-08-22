@@ -176,7 +176,7 @@ class CinemaController
 
 				$stmt->execute(["prenom" => $prenom, "nom" => $nom,"dateSQL" => $date, "sexe"=>$sexe, "photo"=>$photo]);
 
-                $newIdPersonne = $pdo->lastInsertId();
+            $newIdPersonne = $pdo->lastInsertId();
 
             $requete = $pdo->prepare("INSERT INTO acteur (id_personne)
 
@@ -200,22 +200,34 @@ class CinemaController
             $date = filter_input(INPUT_POST, "dateNaissance", FILTER_SANITIZE_SPECIAL_CHARS);
 			$prenom = filter_input(INPUT_POST, "prenom", FILTER_SANITIZE_SPECIAL_CHARS);
 			$nom=  filter_input(INPUT_POST, "nom", FILTER_SANITIZE_SPECIAL_CHARS);
+            $sexe=  filter_input(INPUT_POST, "sexe", FILTER_SANITIZE_SPECIAL_CHARS);
+            $photo = filter_input(INPUT_POST, "photo", FILTER_SANITIZE_SPECIAL_CHARS);
 					
-			if ($prenom && $nom && $date) {
+			if ($prenom && $nom && $date && $sexe && $photo)
+            {
 				$pdo = Connect::seConnecter();
 				$stmt = $pdo->prepare
                 ("
-				INSERT INTO acteur (prenom, nom, dateNaissance)
-				VALUES (:prenom, :nom,:date)
+				INSERT INTO personne (prenom, nom, dateNaissance, sexe, photo)
+				VALUES (:prenom, :nom,:date, :sexe, :photo)
 				");
 
-				$stmt->execute(["prenom" => $prenom, "nom" => $nom,"dateNaissance" => $date]);
+				$stmt->execute(["prenom" => $prenom, "nom" => $nom,"date" => $date, "sexe"=>$date, "photo"=>$photo]);
 
-				header('location:index.php?action=listRealisateur');
-				die();
+            $newIdRealisateur = $pdo->lastInsertId();
+
+            $requete = $pdo->prepare("INSERT INTO realisateur (id_personne)
+
+            VALUES (:idRealisateur)");
+
+            $requete->execute(['idRealisateur' => $newIdRealisateur ]);
+    
+
+				header('location:index.php?action=listRealisateurs');
+				
 			}
 		}
-		require "view/ajoutActeur.php";
+		require "view/ajoutRealisateur.php";
 	}
 
     public function ajouFilm()
