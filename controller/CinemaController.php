@@ -62,11 +62,11 @@ class CinemaController
         require "view/listCastings.php";
     }
 
-    public function detailFilm ($id){
+    /*public function detailFilm ($id){
         $pdo = Connect ::seConnecter ();
         $requete = $pdo->prepare("select titre from film where id_film = :id");
         $requete->execute(["id"=>$id]);
-        require "view/detailFilm.php";}  
+        require "view/detailFilm.php";} */ 
 
     // public function detailActeur ($id){
         // $pdo = Connect ::seConnecter ();
@@ -100,7 +100,7 @@ class CinemaController
         $requete->execute(["id"=>$id]);
         require "view/detailGenre.php";} 
 
-    public function ajoutFilm (){
+    /*public function ajoutFilm (){
         $pdo = Connect::seConnecter();
 		
 		$requete = $pdo->query("
@@ -114,7 +114,7 @@ class CinemaController
 
 		");
         require "view/ajoutFilm.php";
-    }
+    }*/
 
     public function ajoutGenre(){
     if(isset($_POST['submit'])){
