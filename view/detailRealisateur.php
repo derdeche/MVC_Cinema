@@ -1,12 +1,13 @@
 <?php
 ob_start();?>
-<p class= "titre">Liste des Réalisateurs</p>
+<p class= "titre">Détails du Réalisateur</p>
 <?php
-    foreach ($requete->fetchAll() as $acteur) { ?>
+    foreach ($requete->fetchAll() as $realisateur) { ?>
                     
                 <div class="photo-acteur">
-                    <a href="index.php?action=detailsActeur&id=<?= $acteur["id_acteur"] ?>">
-                    <img src="<?= $acteur["photo"] ?>" ></a>
+                    
+                    <img src="<?= $realisateur["photo"] ?>" >
+
                 </div>
                 
         <?php } ?>
