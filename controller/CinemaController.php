@@ -239,7 +239,7 @@ class CinemaController
         ");
 
 		$requeteRole = $pdo->query("
-			SELECT id_role, role FROM role 
+        SELECT id_role, role FROM role 
         ");
 
         $requeteFilm = $pdo->query("
@@ -252,7 +252,7 @@ class CinemaController
         $id_film = filter_input(INPUT_POST, "id_film", FILTER_SANITIZE_SPECIAL_CHARS);
         $id_role = filter_input(INPUT_POST, "id_role", FILTER_SANITIZE_SPECIAL_CHARS);
         $id_acteur=  filter_input(INPUT_POST, "id_acteur", FILTER_SANITIZE_SPECIAL_CHARS);
-       
+    //    var_dump($_POST);die;
                 
         if ($id_film && $id_role && $id_acteur )
         {
@@ -260,10 +260,10 @@ class CinemaController
             $stmt = $pdo->prepare
             ("
             INSERT INTO jouer (id_film, id_role, id_acteur)
-            VALUES (:id_film, :id_role,:id_acteur)
+            VALUES (:id_FILM, :id_ROLE, :id_ACTEUR)
             ");
 
-            $stmt->execute(["id_film" => $id_film, "id_role" => $id_role, "id_acteur" => $id_acteur]);
+            $stmt->execute(["id_FILM" => $id_film, "id_ROLE" => $id_role, "id_ACTEUR" => $id_acteur]);
 
         // $newIdrole = $pdo->lastInsertId();
         // $newIdacteur = $pdo->lastInsertId();
