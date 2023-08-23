@@ -24,6 +24,10 @@ ob_start();?>
     <a href="index.php?action=ajoutRole"><p class ="a"><strong>Ajouter un Rôle</strong></a>
     </div>
 
+    <div class="rectangle">
+    <a href="index.php?action=ajoutCasting"><p class ="a"><strong>Ajouter un Casting</strong></a>
+    </div>
+
 </div>
 
 
