@@ -1,6 +1,7 @@
 <?php
 ob_start();
 ?>
+<p class= "titre"><strong>Ajoutez un Acteur</strong></p>
 <form action="index.php?action=ajoutActeur" method="post">
 
     <label >Prénom :</label>
