@@ -1,21 +1,15 @@
 <?php
 ob_start();?>
-<p class= "titre"><strong>Ajoutez un Rôle</strong></p>
+
 <?php
     foreach ($requete->fetchAll() as $acteur) { ?>
-        <div class="card-film">
-            <div class="container-flex">
-                    <div class="photo-acteur">
-                    <a href="index.php?action=detailsActeur&id=<?= $acteur["id_acteur"] ?>">
-                    <img src="<?= $actor["photo"] ?>" >
-                    </a>
-                </div>
-                <div class="infos-acteur">
-                    <p><?= $actor["nom"] . " " . $actor["prenom"] ?></p>
-                    <p><?= $actor["dateNaissance"] ?></p>
-                </div>
-            </div>
-        </div>
+        
+               
+                    <img src="<?= $acteur["photo"] ?>" >
+              <?=$acteur["id_acteur"]?>
+                    <p><?= $acteur["nom"] . " " . $acteur["prenom"] ?></p>
+                    <p><?= $acteur["dateNaissance"] ?></p>
+          
         <?php } ?>
 <?php
 
