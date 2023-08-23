@@ -2,8 +2,7 @@
 ob_start();?>
 
 
-<?php
-    foreach ($requete->fetchAll() as $film) { ?>
+<?php  foreach ($requete->fetchAll() as $film) { ?>
                     
                     <?= $film["titre"] ?>
 <p>Sortie en <?= $film["anneeSortie"] ?>
@@ -12,14 +11,12 @@ ob_start();?>
 <img src="<?=$film["affiche"]?>">
 <p>Note : <?=$film["note"]?></p>
                 
-        <?php } ?>     
-        
-    
+<?php } ?>     
+      
 
 
 
-
-<?=
+<?php
 $content = ob_get_clean();
 
 require "view/template.php";
