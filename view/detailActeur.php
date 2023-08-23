@@ -1,5 +1,6 @@
 <?php
 ob_start();?>
+<p class= "titre"><strong>Ajoutez un Rôle</strong></p>
 <?php
     foreach ($requete->fetchAll() as $acteur) { ?>
         <div class="card-film">
