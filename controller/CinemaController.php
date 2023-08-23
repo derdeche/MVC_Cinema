@@ -62,19 +62,21 @@ class CinemaController
         require "view/listCastings.php";
     }
 
-    /*public function detailFilm ($id){
+    public function detailFilm ($id){
         $pdo = Connect ::seConnecter ();
-        $requete = $pdo->prepare("select titre from film where id_film = :id");
+        $requete = $pdo->prepare("SELECT titre, anneeSortie, duree, synopsis, note, affiche  FROM film 
+        where id_film = :id");
         $requete->execute(["id"=>$id]);
-        require "view/detailFilm.php";} */ 
+        require "view/detailFilm.php";} 
+ 
 
-    // public function detailActeur ($id){
-        // $pdo = Connect ::seConnecter ();
-        // $requete = $pdo->prepare("SELECT nom, prenom FROM personne 
-        // INNER JOIN acteur ON personne.id_personne = acteur.id_personne
-        // WHERE id_acteur =  :id");
-    //  $requete->execute(["id"=>$id]);
-    // require "view/detailActeur.php";} 
+    public function detailActeur ($id){
+        $pdo = Connect ::seConnecter ();
+        $requete = $pdo->prepare("SELECT id_acteur, nom, prenom ,dateNaissance , photo FROM personne 
+        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        WHERE id_acteur =  :id");
+        $requete->execute(["id"=>$id]);
+        require "view/detailActeur.php";} 
 
     public function detailRealisateur ($id){
         $pdo = Connect ::seConnecter ();
@@ -264,17 +266,7 @@ class CinemaController
             ");
 
             $stmt->execute(["id_FILM" => $id_film, "id_ROLE" => $id_role, "id_ACTEUR" => $id_acteur]);
-
-        // $newIdrole = $pdo->lastInsertId();
-        // $newIdacteur = $pdo->lastInsertId();
-        // $newIdfilm = $pdo->lastInsertId();
-
-        // $requete = $pdo->prepare("INSERT INTO jouer (id_film, id_role, id_acteur)
-
-        // VALUES (:id_film, :id_role , :id_acteur)");
-
-        // $requete->execute(['id_film' => $newIdfilm , 'id_role' => $newIdrole ,'id_acteur' => $newIdacteur]);
-        
+            
 
         header('location:index.php?action=listCastings');
             
@@ -282,7 +274,7 @@ class CinemaController
         }
        
         require "view/ajoutCasting.php";
-        // header('location:index.php?action=listCastings');
+        
     }
 
     // public function ajouFilm()
@@ -335,56 +327,8 @@ class CinemaController
 	// 	}
 	// 	require "view/ajoutFilm.php";
 	// }
-
-    /*public function detailFilm($id_film)
-	{
-		
-		$pdo = Connect::seConnecter();
-		$film = "$id_film";
-		$requete= $pdo->prepare("
-			SELECT id_realisateur, titre, anneSortie, duree, synopsis, genre, nom, prenom, note, affiche
-			FROM  film
-			INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
-			INNER JOIN genre ON action.id_genre = genre.genre_id
-			WHERE  film.id_film = :id_film
-    	");
-		
-		$requete->execute(["id_film" => $film]);
-
-        require "view/detailFilm.php";
-	}*/
-
-    public function detailActeur($id_acteur)
-	{
-		$pdo = Connect::seConnecter();
-
-		$nom = "$id_acteur";
-
-		$requete = $pdo->prepare("
-			SELECT id_acteur, nom, prenom, DATE_FORMAT(dateNaissance, '%d/%m/%Y') AS date
-			FROM ateur 
-			WHERE id_acteur = :id_acteur
-
-		");
-
-		$requete->execute(["id_acteur" => $id_acteur]);
-
-		$pdo = Connect::seConnecter();
-
-		$name = "$id_acteur";
-
-		$requete = $pdo->prepare("
-			SELECT id_acteur,id_film, titre, anneeSortie, role 
-			FROM acteur
-			
-
-		");
-
-		$requete->execute(["id_acteur" => $id_acteur]);
-
-
-		require "view/detailActeur.php";
-	}
+    
+    
 
           
 }
