@@ -1,6 +1,6 @@
 <?php
 ob_start();?>
-
+<p class= "titre"><strong>Ajoutez un Film</strong></p>
 <form action="index.php?action=ajoutFilm" method="post">
 
     <label >Titre :</label>
