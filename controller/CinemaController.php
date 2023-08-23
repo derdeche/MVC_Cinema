@@ -230,6 +230,61 @@ class CinemaController
 		require "view/ajoutRealisateur.php";
 	}
 
+    public function ajoutCasting (){
+        $pdo = Connect::seConnecter();
+		
+        $requeteActeur = $pdo->query("
+		SELECT nom, prenom, id_acteur  FROM personne
+        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        ");
+
+		$requeteRole = $pdo->query("
+			SELECT id_role, role FROM role 
+        ");
+
+        $requeteFilm = $pdo->query("
+		SELECT id_film, titre FROM film
+        
+        ");
+
+        if (isset($_POST["submit"]))
+        {
+        $id_film = filter_input(INPUT_POST, "id_film", FILTER_SANITIZE_SPECIAL_CHARS);
+        $id_role = filter_input(INPUT_POST, "id_role", FILTER_SANITIZE_SPECIAL_CHARS);
+        $id_acteur=  filter_input(INPUT_POST, "id_acteur", FILTER_SANITIZE_SPECIAL_CHARS);
+       
+                
+        if ($id_film && $id_role && $id_acteur )
+        {
+            $pdo = Connect::seConnecter();
+            $stmt = $pdo->prepare
+            ("
+            INSERT INTO jouer (id_film, id_role, id_acteur)
+            VALUES (:id_film, :id_role,:id_acteur)
+            ");
+
+            $stmt->execute(["id_film" => $id_film, "id_role" => $id_role, "id_acteur" => $id_acteur]);
+
+        // $newIdrole = $pdo->lastInsertId();
+        // $newIdacteur = $pdo->lastInsertId();
+        // $newIdfilm = $pdo->lastInsertId();
+
+        // $requete = $pdo->prepare("INSERT INTO jouer (id_film, id_role, id_acteur)
+
+        // VALUES (:id_film, :id_role , :id_acteur)");
+
+        // $requete->execute(['id_film' => $newIdfilm , 'id_role' => $newIdrole ,'id_acteur' => $newIdacteur]);
+        
+
+        header('location:index.php?action=listCastings');
+            
+        }
+        }
+       
+        require "view/ajoutCasting.php";
+        // header('location:index.php?action=listCastings');
+    }
+
     // public function ajouFilm()
 	// {
 	// 	$pdo = Connect::seConnecter();
