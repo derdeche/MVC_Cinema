@@ -6,7 +6,7 @@ ob_start();
 <form action="index.php?action=ajoutGenre" method="post">
    
         
-    <input placeholder= "Nom du Genre"></input>
+    <input type ='text' name='genre' placeholder= "Nom du Genre"></input>
         
     <input type="submit" name="submit" value="Ajouter"></input>
      
