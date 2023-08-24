@@ -4,7 +4,7 @@ ob_start();?>
 <form action="index.php?action=ajoutFilm" method="post">
 
     <label >Titre :</label>
-    <input type="textarea" name="titre"  placeholder="Nom du film ">
+    <input type="text" name="titre"  placeholder="Nom du film ">
 
     <label >Année de sortie :</label>
     <input type="number" name="anneeSortie" >
@@ -13,17 +13,17 @@ ob_start();?>
     <input type="number" name="duree" >
 
     <label >Synopsis :</label>
-    <input type="textarea" name="synopsis" >
+    <textarea name="synopsis" id="" cols="30" rows="10"></textarea>
 
     <label >Photo :</label>
-    <input type="textarea" name="affiche" placeholder= "URL">
+    <input type="text" name="affiche" placeholder= "URL">
 
     <label >Note :</label>
     <input type="number" min="1" max="5" name="note" >
         
     <label >Genre : </label>           
     <select name="id_genre">
-        <?php foreach($requete->fetchAll() as $genre){ ?>
+        <?php foreach($requeteG->fetchAll() as $genre){ ?>
              <option value="<?= $genre['id_genre']?>"><?=$genre['genre']?></option>
         <?php }?>
     </select>           
