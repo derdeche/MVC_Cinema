@@ -109,7 +109,7 @@ class CinemaController
 	{
 		$pdo = Connect::seConnecter();
 
-		$requete = $pdo->query("
+		$requeteG = $pdo->query("
 			SELECT id_genre, genre
 			FROM genre 
 			");
@@ -132,35 +132,37 @@ class CinemaController
 			$id_genre = filter_input(INPUT_POST, "id_genre", FILTER_SANITIZE_NUMBER_INT);
 			$id_realisateur = filter_input(INPUT_POST, "id_realisateur", FILTER_SANITIZE_NUMBER_INT);
 
+        if ($titre && $anneeSortie && $duree && $synopsis && $affiche && $note && $id_genre && $id_realisateur) {
+            $pdo = Connect::seConnecter();
+        
+            $stmt = $pdo->prepare("
+            INSERT INTO film (titre, anneeSortie, duree, synopsis,affiche, note, id_realisateur)
+            VALUES (:titre, :anneeSortie, :duree, :synopsis, :affiche, :note, :id_realisateur)	
+            ");
 
-			
-			if ($titre && $anneeSortie && $duree && $synopsis && $affiche && $note && $id_genre && $id_realisateur) {
-				$pdo = Connect::seConnecter();
-			
-				$stmt = $pdo->prepare
-                ("
-				INSERT INTO film (titre, anneeSortie, duree, synopsis,affiche, note,id_genre, id_realisateur)
-				VALUES (:titre, :anneeSortie, :duree, :synopsis, :affiche, :note, :id_genre, :id_realisateur)	
-				");
+            $stmt->execute([
+                "titre" => $titre, 
+                "anneeSortie" => $anneeSortie, 
+                "duree" => $duree, 
+                "synopsis" => $synopsis, 
+                "affiche" => $affiche, 
+                "note" => $note,
+                "id_realisateur" => $id_realisateur
+            ]);
 
-				$stmt->execute
-                ([
-					"titre" => $titre, "anneeSortie" => $anneeSortie, "duree" => $duree, "synopsis" => $synopsis, "affiche" => $affiche, "note" => $note, "id_genre" => $id_genre, "id_realisateur" => $id_realisateur
-				]);
+            $newIdFilm = $pdo->lastInsertId();
+            
+            $stmt = $pdo->prepare("
+            INSERT INTO action (id_film, id_genre) VALUES (:id_film, :id_genre)");
+            $stmt->execute([
+                "id_film" => $newIdFilm,
+                "id_genre" => $id_genre
+            ]);
 
-				
-                $newIdFilm = $pdo->lastInsertId();
+            header('Location: index.php?action=listFilms');
                 
-                $requete = $pdo->prepare("INSERT INTO film (id_personne)
-    
-                VALUES (:idFilm)");
-    
-                $requete->execute(['idFilm' => $newIdFilm ]);
-    
-                header('Location: index.php?action=listFilms');
-                   
-                    
-			}
+                
+        }
 		    }
 		        require "view/ajoutFilm.php";
 	}
@@ -168,16 +170,15 @@ class CinemaController
     public function ajoutGenre(){
     if(isset($_POST['submit'])){
 
-            
+        $genre = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_SPECIAL_CHARS);   
         $pdo = connect::seConnecter(); 
         $requete= $pdo->prepare("
-        INSERT INTO genre (genre)
-        VALUES (:nomGenre)"
-        );
-        $requete->execute(['nomGenre' => $_POST['nomGenre']]);
-        $newId = $pdo->lastInsertId();
-        header("Location:index.php?action=detailGenre&id=".$newId);
-        die;
+        INSERT INTO genre ( genre)
+        VALUES ( :genre)
+        ");
+        $requete->execute(['genre'=>$genre]);
+        
+        header("Location:index.php?action=listGenres");
     }
         require "view/ajoutGenre.php";
                            
@@ -185,15 +186,19 @@ class CinemaController
 
     public function ajoutRole (){
         if(isset($_POST['submit'])){
+            $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_SPECIAL_CHARS);  
+            var_dump($role);
             $pdo = connect::seConnecter();
             $requete= $pdo->prepare("
             INSERT INTO role (role)
             VALUES (:nomRole)"
             );
-            $requete->execute(['nomRole' => $_POST['nomRole']]);
-            $newId = $pdo->lastInsertId();
-            header("Location:index.php?action=detailRole&id=".$newId);
-            die;
+            $requete->execute([
+                'nomRole' => $role
+            ]);
+            
+            header("Location:index.php?action=listRoles");
+            
 
         }
             require "view/ajoutRole.php";
