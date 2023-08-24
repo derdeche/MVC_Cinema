@@ -22,7 +22,7 @@ ob_start();?>
     <input type="number" min="1" max="5" name="note" >
         
     <label >Genre : </label>           
-    <select >
+    <select name="id_genre">
         <?php foreach($requete->fetchAll() as $genre){ ?>
              <option value="<?= $genre['id_genre']?>"><?=$genre['genre']?></option>
         <?php }?>
@@ -31,7 +31,7 @@ ob_start();?>
   
 
     <label >Réalisateur :</label>
-        <select >
+        <select name="id_realisateur">
             <?php foreach($requeteR->fetchAll() as $realisateur) {?>
                 <option value="<?= $realisateur['id_realisateur']?>"><?=$realisateur['nom']." ".$realisateur['prenom']?></option>
         <?php  } ?>
