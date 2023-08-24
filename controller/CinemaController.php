@@ -11,10 +11,6 @@ class CinemaController
         ");
         require "view/listFilms.php";}
 
-    /*$realisateur = $pdo->query("
-    SELECT id_realisateur FROM realisateur
-    ");*/
-
     public function listActeurs(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("     
@@ -102,26 +98,77 @@ class CinemaController
         $requete->execute(["id"=>$id]);
         require "view/detailGenre.php";} 
 
-    public function ajoutFilm (){
-        $pdo = Connect::seConnecter();
-		
+        public function Ajout()
+    {
+        require "view/listAjout.php";
+    }
+
+    
+
+    public function ajoutFilm()
+	{
+		$pdo = Connect::seConnecter();
+
 		$requete = $pdo->query("
-			SELECT id_genre, genre FROM genre 
+			SELECT id_genre, genre
+			FROM genre 
 			");
 
         $requeteR = $pdo->query("
-		SELECT id_realisateur, nom, prenom FROM personne
-        INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+            SELECT id_realisateur, nom, prenom FROM personne
+            INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
         
+		    ");
+		
+			
+		if (isset($_POST["submit"])) {
+			
+			$titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
+			$anneeSortie = filter_input(INPUT_POST, "anneeSortie", FILTER_SANITIZE_NUMBER_INT);
+			$duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
+			$synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_SPECIAL_CHARS);
+			$affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_SPECIAL_CHARS);
+            $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);
+			$id_genre = filter_input(INPUT_POST, "id_genre", FILTER_SANITIZE_NUMBER_INT);
+			$id_realisateur = filter_input(INPUT_POST, "id_realisateur", FILTER_SANITIZE_NUMBER_INT);
 
-		");
-        require "view/ajoutFilm.php";
-    }
+
+			
+			if ($titre && $anneeSortie && $duree && $synopsis && $affiche && $note && $id_genre && $id_realisateur) {
+				$pdo = Connect::seConnecter();
+			
+				$stmt = $pdo->prepare
+                ("
+				INSERT INTO film (titre, anneeSortie, duree, synopsis,affiche, note,id_genre, id_realisateur)
+				VALUES (:titre, :anneeSortie, :duree, :synopsis, :affiche, :note, :id_genre, :id_realisateur)	
+				");
+
+				$stmt->execute
+                ([
+					"titre" => $titre, "anneeSortie" => $anneeSortie, "duree" => $duree, "synopsis" => $synopsis, "affiche" => $affiche, "note" => $note, "id_genre" => $id_genre, "id_realisateur" => $id_realisateur
+				]);
+
+				
+                $newIdFilm = $pdo->lastInsertId();
+                
+                $requete = $pdo->prepare("INSERT INTO film (id_personne)
+    
+                VALUES (:idFilm)");
+    
+                $requete->execute(['idFilm' => $newIdFilm ]);
+    
+                header('Location: index.php?action=listFilms');
+                   
+                    
+			}
+		    }
+		        require "view/ajoutFilm.php";
+	}
 
     public function ajoutGenre(){
     if(isset($_POST['submit'])){
 
-        // var_dump($_POST);die;    
+            
         $pdo = connect::seConnecter(); 
         $requete= $pdo->prepare("
         INSERT INTO genre (genre)
@@ -152,11 +199,7 @@ class CinemaController
             require "view/ajoutRole.php";
     
     }       
-
-    public function Ajout()
-    {
-        require "view/listAjout.php";
-    }
+    
 
     public function ajoutActeur()
 	{
@@ -276,59 +319,8 @@ class CinemaController
         require "view/ajoutCasting.php";
         
     }
-
-    // public function ajouFilm()
-	// {
-	// 	$pdo = Connect::seConnecter();
-
-	// 	$requete = $pdo->query
-    //         ("
-	// 		SELECT id_genre, genre
-	// 		FROM genre 
-	// 		");
-		
-	// 	$requete = $pdo->query
-    //     ("
-	// 	SELECT CONCAT(prenom, ' ',nom) AS nomprenom , id_realisateur
-	// 	FROM realisateur
-	// 	");
-
-		
-	// 	if (isset($_POST["submit"])) {
-			
-	// 		$titre = filter_input(INPUT_POST, "titre", FILTER_SANITIZE_SPECIAL_CHARS);
-	// 		$anneeSortie = filter_input(INPUT_POST, "anneeSortie", FILTER_SANITIZE_NUMBER_INT);
-	// 		$duree = filter_input(INPUT_POST, "duree", FILTER_SANITIZE_NUMBER_INT);
-	// 		$synopsis = filter_input(INPUT_POST, "synopsis", FILTER_SANITIZE_SPECIAL_CHARS);
-	// 		$affiche = filter_input(INPUT_POST, "affiche", FILTER_SANITIZE_SPECIAL_CHARS);
-    //         $note = filter_input(INPUT_POST, "note", FILTER_SANITIZE_NUMBER_INT);
-	// 		$id_genre = filter_input(INPUT_POST, "id_genre", FILTER_SANITIZE_NUMBER_INT);
-	// 		$id_realisateur = filter_input(INPUT_POST, "id_realisateur", FILTER_SANITIZE_NUMBER_INT);
-
-
-			
-	// 		if ($titre && $anneeSortie && $duree && $synopsis && $affiche && $note && $id_genre && $id_realisateur) {
-	// 			$pdo = Connect::seConnecter();
-			
-	// 			$stmt = $pdo->prepare
-    //             ("
-	// 			INSERT INTO film (titre, anneeSortie, duree, synopsis,affiche, note,id_genre, id_realisateur)
-	// 			VALUES (:titre, :anneeSortie, :duree, :synopsis, :affiche, :note, :id_genre, :id_realisateur)	
-	// 			");
-
-	// 			$stmt->execute
-    //             ([
-	// 				"titre" => $titre, "anneeSortie" => $anneeSortie, "duree" => $duree, "synopsis" => $synopsis, "affiche" => $affiche, "note" => $note, "id_genre" => $id_genre, "id_realisateur" => $id_realisateur
-	// 			]);
-
-	// 			header('Location: index.php?action=listFilms');
-	// 			die();
-	// 		}
-	// 	}
-	// 	require "view/ajoutFilm.php";
-	// }
-    
-    
+     
+   
 
           
 }
