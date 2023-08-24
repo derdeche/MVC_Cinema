@@ -3,7 +3,7 @@ ob_start();
 ?>
 <p class= "titre"><strong>Ajoutez un Rôle</strong></p>
 <form action="index.php?action=ajoutRole" method="post">
-<input placeholder= "Nom du Role">    </input>
+<input type='text' name='role' placeholder= "Nom du Role">    </input>
 <input type="submit" name="submit" value="Ajouter"></input>
 </form>
 
