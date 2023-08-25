@@ -6,6 +6,7 @@ foreach( $requete->fetchAll() as $film){ ?>
         
     <tr>
         <td><?= $film["titre"]?></td><br>
+        <img src="<?= $film["affiche"] ?>">
         
         
     </tr>
