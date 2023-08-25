@@ -18,7 +18,7 @@ $realisateur = $requete->fetch();
 <p>Liste des Films réalisés</p>  
 <?php
 foreach($requeteF->fetchAll() as $film){?>
- <p><?=$film["titre"]?></p>
+ <a href="index.php?action=detailFilm&id=<?=$film["id_film"]?>"><?=$film["titre"]?></a>
      
 <?php } ?>
 <?php
