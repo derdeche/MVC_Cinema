@@ -87,7 +87,7 @@ class CinemaController
         INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne        
         WHERE id_realisateur =  :id"); 
         $requete->execute(["id"=>$id]);
-        $requeteF = $pdo->prepare("SELECT film.titre FROM film         
+        $requeteF = $pdo->prepare("SELECT film.titre,id_film FROM film         
         WHERE id_realisateur =  :id");
          $requeteF->execute(["id"=>$id]);
 
@@ -96,7 +96,7 @@ class CinemaController
 
     public function detailRole ($id){
         $pdo = Connect ::seConnecter ();
-        $requete = $pdo->prepare("SELECT titre FROM film
+        $requete = $pdo->prepare("SELECT titre,affiche FROM film
         INNER JOIN jouer ON film.id_film = jouer.id_film        
         WHERE id_role =  :id"); 
         $requete->execute(["id"=>$id]);
@@ -104,7 +104,7 @@ class CinemaController
 
     public function detailGenre ($id){
         $pdo = Connect ::seConnecter ();
-        $requete = $pdo->prepare("SELECT titre, affiche FROM film
+        $requete = $pdo->prepare("SELECT film.id_film,titre, affiche FROM film
         INNER JOIN action ON film.id_film = action.id_film     
         WHERE id_genre =  :id"); 
         $requete->execute(["id"=>$id]);
