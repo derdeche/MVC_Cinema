@@ -1,9 +1,12 @@
-<?php ob_start();?>
+<?php ob_start();
+$films = $requete->fetchAll();
+
+?>
 
     
         
     
-            <?php foreach( $requete->fetchAll() as $film ){ ?>
+            <?php foreach( $films as $film ){ ?>
                 
                 <div class = "photo">
                 <a href="index.php?action=detailFilm&id=<?= $film["id_film"] ?>">
@@ -22,3 +25,4 @@ $content = ob_get_clean();
 require "view/template.php";
 
 ?>
+
