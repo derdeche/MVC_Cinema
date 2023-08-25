@@ -1,12 +1,12 @@
 <?php ob_start();?>
 <p class= "titre"><strong>Liste des Acteurs</strong></p>
 <?php
-    foreach ($requete->fetchAll() as $acteur) { ?>
+    foreach ($requete->fetchAll() as $role) { ?>
                     
                 <div class="photo-acteur">
-                    <a href="index.php?action=detailActeur&id=<?= $acteur["id_acteur"] ?>">
-                    <img src=<?= $acteur["photo"] ?> >
-                    <p ><strong><?= $acteur["nom"]." ".$acteur["prenom"] ?></strong></p>
+                    <a href="index.php?action=detailActeur&id=<?= $role["id_acteur"] ?>">
+                    <img src=<?= $role["photo"] ?> >
+                    <p ><strong><?= $role["nom"]." ".$role["prenom"] ?></strong></p>
                     </a> 
                 </div>
                 
