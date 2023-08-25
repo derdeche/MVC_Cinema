@@ -76,10 +76,15 @@ class CinemaController
 
     public function detailRealisateur ($id){
         $pdo = Connect ::seConnecter ();
-        $requete = $pdo->prepare("SELECT nom, prenom FROM personne
+        $requete = $pdo->prepare("SELECT id_realisateur, nom, prenom,photo,dateNaissance, sexe FROM personne
         INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne        
         WHERE id_realisateur =  :id"); 
         $requete->execute(["id"=>$id]);
+        $requeteF = $pdo->prepare("SELECT film.titre FROM film         
+        WHERE id_realisateur =  :id");
+         $requeteF->execute(["id"=>$id]);
+
+        // requete 2 : liste des films
         require "view/detailRealisateur.php";} 
 
     public function detailRole ($id){
